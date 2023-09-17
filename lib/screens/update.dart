@@ -51,7 +51,7 @@ class _UpdateState extends State<Update> {
 
       body: Container(
         padding: EdgeInsets.all(30),
-        width: 400,
+        width: 450,
         child: ListView(
           children: [
             Column(
