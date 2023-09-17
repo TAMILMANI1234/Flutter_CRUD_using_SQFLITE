@@ -27,15 +27,10 @@ class _InsertState extends State<Insert> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      appBar:AppBar(
-        title:const Text(
-            'Insert Student Details',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold
-          ),
-        ),
+      appBar: AppBar(
+        title: Text("Insert student details"),
         centerTitle: true,
+        backgroundColor: Colors.yellow,
       ),
       body: Center(
          child: Container(
@@ -222,7 +217,7 @@ class _InsertState extends State<Insert> {
                                  _student.gender=_gender;
                                  var res=await _service.saverecord(_student);
                                  Navigator.pop(context,res);
-                                 //showAlertBox(context, "Student Details Added Successfully");
+
 
                                }
                              },
@@ -240,21 +235,4 @@ class _InsertState extends State<Insert> {
       ),
     );
   }
-}
-showAlertBox(BuildContext context, String S){
-  AlertDialog alertDialog=AlertDialog(
-    title: Text('Alert Box'),
-    content: Text(S),
-    actions: [
-      ElevatedButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: ((context)=>MyApp())));
-        },
-          child: Text('Ok'))
-    ],
-  );
-  showDialog(
-      context: context,
-      builder: (BuildContext context){
-        return alertDialog;
-      });
 }

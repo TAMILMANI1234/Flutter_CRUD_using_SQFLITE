@@ -35,6 +35,7 @@ class _DisplayState extends State<Display> {
       setState(() {
         _count=_count+1;
       });
+      isvisible();
     });
   }
   @override
@@ -46,14 +47,30 @@ class _DisplayState extends State<Display> {
     getRecord();
   }
 
+  isvisible(){
+    if(_count>0){
+      setState(() {
+        _visibility=true;
+      });
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Students Records'),
         centerTitle: true,
+        backgroundColor: Colors.yellow,
       ),
-      body: ListView.builder(
+      body: (_visibility==false)? Center(
+        child: Text("No data",style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            color: Colors.red
+        ),),
+      ):ListView.builder(
         itemCount: _studentlist.length,
           itemBuilder: (context,index){
               return Card(
@@ -201,6 +218,10 @@ class _DisplayState extends State<Display> {
                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Update(student: _studentlist[index],)));
                                    },
                                    child: Text('Edit'),
+                                 style: ElevatedButton.styleFrom(
+                                     backgroundColor: Colors.yellow,
+                                     foregroundColor: Colors.black
+                                 ),
                                ),
                                ElevatedButton(
                                    onPressed: (){
@@ -214,8 +235,10 @@ class _DisplayState extends State<Display> {
                                    },
                                    child: Text('Delete'),
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.red
+                                      backgroundColor: Colors.red,
+                                        foregroundColor: Colors.white
                                     ),
+
                                ),
 
                              ],

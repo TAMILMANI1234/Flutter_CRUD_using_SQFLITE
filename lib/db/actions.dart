@@ -33,11 +33,7 @@ display(table) async{
     return await connection?.query(table);
 }
 
-//Display by roll
-searchby(table,roll) async{
-  var connection=await database;
-  return await connection?.query(table,where: 'roll=?',whereArgs: [roll]);
-}
+
 
 //Edit
 updaterecord(table,data) async{

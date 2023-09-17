@@ -42,10 +42,11 @@ class _UpdateState extends State<Update> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          appBar: AppBar(
-            title: Text("Edit Student Details"),
-            centerTitle: true,
-          ),
+        appBar: AppBar(
+          title: Text("Edit Record"),
+          centerTitle: true,
+          backgroundColor: Colors.yellow,
+        ),
 
 
       body: Container(
@@ -168,7 +169,11 @@ class _UpdateState extends State<Update> {
                       Navigator.push(context,MaterialPageRoute(builder: (context)=>MyApp()));
 
                     },
-                    child: const Text("Update")
+                    child: const Text("Save"),
+                   style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white
+                  ),
                 )
 
               ],
