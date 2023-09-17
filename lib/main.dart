@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
-        primarySwatch: Colors.yellow,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+        useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Sqlite CRUD Operations'),
     );
@@ -32,22 +32,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  /*late List<Student> _studentlist;
-  final _service=Service();
-
-  getRecord() async{
-    var students=await _service.display();
-    print(students);
-    students.forEach
-  }*/
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sqlite CRUD Operations'),
+        title: const Text('Sqflite CRUD Operations'),
         centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
         child: Column(
@@ -68,15 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
 
             Container(
-              child:TextButton(
-                child: Text('Get Record', style: TextStyle(fontSize: 25)),
+              child:ElevatedButton(
+                child: Text('Get student Details', style: TextStyle(fontSize: 25)),
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Display()));
                 },
-                style: TextButton.styleFrom(
+                style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
-                    elevation: 2,
                     backgroundColor: Colors.amber),
+
               ),
             ),
           ],

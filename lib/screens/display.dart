@@ -209,7 +209,7 @@ class _DisplayState extends State<Display> {
                                           String? name=_studentlist[index].name;
                                           var res= _Service.delete(id!);
                                           Navigator.pop(context,res);
-                                          //showAlertBox(context, "Student $name record is Deleted");
+
 
                                    },
                                    child: Text('Delete'),
@@ -238,21 +238,3 @@ class _DisplayState extends State<Display> {
   }
 
 }
-/*
-showAlertBox(BuildContext context, String S){
-  AlertDialog alertDialog=AlertDialog(
-    title: Text('Alert Box'),
-    content: Text(S),
-    actions: [
-      ElevatedButton(onPressed: (){
-        Navigator.of(context).pop(MaterialPageRoute(builder: (context)));
-      },
-          child: Text('Ok'))
-    ],
-  );
-  showDialog(
-      context: context,
-      builder: (BuildContext context){
-        return alertDialog;
-      });
-}*/

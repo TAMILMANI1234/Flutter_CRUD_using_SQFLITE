@@ -47,183 +47,134 @@ class _UpdateState extends State<Update> {
             centerTitle: true,
           ),
 
-      /*body: Container(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Text("Student Details",
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.redAccent
-            ),),
 
-            Row(
-              children: [
-                Text("Student Name"),
-                Text(widget.student.name?? '')
-              ]
-            ),
-
-            Row(
-                children: [
-                  Text("Student Roll No"),
-                  Text(widget.student.roll?? '')
-                ]
-            ),
-
-            Row(
-                children: [
-                  Text("Department"),
-                  Text(widget.student.dept?? '')
-                ]
-            ),
-
-            Row(
-                children: [
-                  Text("Age"),
-                  Text(widget.student.age?? '')
-                ]
-            ),
-
-            Row(
-                children: [
-                  Text("Gender"),
-                  Text(widget.student.gender?? '')
-                ]
-            ),
-            Row(
-                children: [
-                  Text("Contact"),
-                  Text(widget.student.mobile?? '')
-                ]
-            )
-          ],
-        )
-
-      ),*/
       body: Container(
         padding: EdgeInsets.all(30),
         width: 400,
-        child: Column(
+        child: ListView(
+          children: [
+            Column(
 
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children:  [
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              controller: _name,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Student Name',
-                  labelText: 'Student Name'
-              ),
-            ),
-
-
-
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              controller: _roll,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Roll No',
-                  labelText: 'Roll Number'
-              ),
-            ),
-
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              controller: _dept,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Department',
-                  labelText: 'Department'
-              ),
-            ),
-
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              controller: _age,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Age',
-                  labelText: 'Age'
-              ),
-            ),
-
-            const SizedBox(
-              height: 30,
-            ),
-            TextField(
-              controller: _mobile,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Contact Number',
-                  labelText: 'Contact Number'
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-
-            Center(
-              child: Column(
-                children: [
-                  ListTile(
-                      leading: Radio<String>(
-                        value: 'Male',
-                        groupValue: _receivedgender,
-                        onChanged: (value){
-                          setState(() {
-                            _gender=value! as TextEditingController;
-                          });
-                        },
-                      ),
-                      title:const Text('Male')
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children:  [
+                const SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  controller: _name,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Student Name',
+                      labelText: 'Student Name'
                   ),
-                  ListTile(
-                      leading: Radio<String>(
-                        value: 'Female',
-                        groupValue: _receivedgender,
-                        onChanged: (value){
-                          setState(() {
-                            _gender=value! as TextEditingController;
-                          });
-                        },
-                      ),
-                      title:const Text('Female')
+                ),
+
+
+
+                const SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  controller: _roll,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Roll No',
+                      labelText: 'Roll Number'
                   ),
+                ),
 
-                ],
-              ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  controller: _dept,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Department',
+                      labelText: 'Department'
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  controller: _age,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Age',
+                      labelText: 'Age'
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  controller: _mobile,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter Contact Number',
+                      labelText: 'Contact Number'
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+
+                Center(
+                  child: Column(
+                    children: [
+                      ListTile(
+                          leading: Radio<String>(
+                            value: 'Male',
+                            groupValue: _receivedgender,
+                            onChanged: (value){
+                              setState(() {
+                                _gender=value! as TextEditingController;
+                              });
+                            },
+                          ),
+                          title:const Text('Male')
+                      ),
+                      ListTile(
+                          leading: Radio<String>(
+                            value: 'Female',
+                            groupValue: _receivedgender,
+                            onChanged: (value){
+                              setState(() {
+                                _gender=value! as TextEditingController;
+                              });
+                            },
+                          ),
+                          title:const Text('Female')
+                      ),
+
+                    ],
+                  ),
+                ),
+
+                ElevatedButton(
+                    onPressed:() async{
+                      var _student=Student();
+                      _student.id=widget.student.id;
+                      _student.name=_name.text;
+                      _student.roll=_roll.text;
+                      _student.dept=_dept.text;
+                      _student.mobile=_mobile.text;
+                      _student.age=_age.text;
+                      _student.gender=_receivedgender;
+                      var res=await _service.Updatestudent(_student);
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>MyApp()));
+
+                    },
+                    child: const Text("Update")
+                )
+
+              ],
             ),
-
-            ElevatedButton(
-                onPressed:() async{
-                  var _student=Student();
-                  _student.id=widget.student.id;
-                  _student.name=_name.text;
-                  _student.roll=_roll.text;
-                  _student.dept=_dept.text;
-                  _student.mobile=_mobile.text;
-                  _student.age=_age.text;
-                  _student.gender=_receivedgender;
-                  var res=await _service.Updatestudent(_student);
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>MyApp()));
-
-                },
-                child: const Text("Update")
-            )
-
           ],
-        ),
+        )
       )
     );
   }
